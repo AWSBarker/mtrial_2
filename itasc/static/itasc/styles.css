@@ -1,0 +1,12 @@
+.sidebar-nav {
+    margin-top: 75px;
+    padding: 0;
+    list-style: none;
+	height:50%;
+	width:100px;
+	position: fixed;
+	background-color:#7965651f;
+}
+.footer {
+        margin-bottom:1px;
+}

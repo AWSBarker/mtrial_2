@@ -1,0 +1,17 @@
+{% extends "itasc/home.html" %}
+{% block content2 %}
+<table class='table'>
+    <tr>
+        <th>Subject ID</th>
+        <th>Device IMEI</th>
+    </tr>
+   {% if object %}
+    <tr>
+        <td>{{ object.subject }}</td>
+        <td>{{ object.device }}</td>
+    </tr>
+</table>
+   {% else %}
+      <li>No pairings found</li>
+   {% endif %}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends "itasc/home.html" %}
+{% block content2 %}
+<table class='table'>
+    <tr>
+        <th>BP Taken at</th>
+        <th>Device IMEI</th>
+        <th>Subject</th>
+        <th>Measured</th>
+    </tr>
+   {% if object_list %}
+    {% for m in object_list %}
+    <tr>
+        <td>{{ m.measurements_timestamp }}</td>
+        <td>{{ m.device_imei }}</td>
+        <td>{{ m.patientid }}</td>
+        <td> {{ m.measurements_systolicbloodpressure_value }} / {{ m.measurements_diastolicbloodpressure_value }}, {{ m.measurements_pulse_value }}</td>
+    </tr>
+    {% endfor %}
+</table>
+ {% else %}
+    <li>No measures found</li>
+ {% endif %}
+
+{% if is_paginated %}
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in paginator.page_range %}
+      {% if page_obj.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+{% endblock %}

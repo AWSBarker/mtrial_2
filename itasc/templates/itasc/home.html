@@ -1,0 +1,27 @@
+{% extends "itasc/base.html" %}
+{% block login %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+{% endblock %}
+{% block f2 %}
+{% include 'itasc/footer.html' %}
+{% endblock %}
+{% block content1 %}
+    <a href="{% url 'itasc:measurements-list' %}">Measures:</a> {{ Nmeasures }}
+    <a href="{% url 'itasc:devices-list' %}"> Devices:</a>  {{ Ndevices }}
+    <a href="{% url 'itasc:patients-list' %}"> Patients:</a>  {{ Npatients }}
+    <a href="{% url 'itasc:pairings-list' %}"> Pairings:</a> {{ Npairings }}
+<br>
+{% endblock %}
+
+
+
+
+
+
+

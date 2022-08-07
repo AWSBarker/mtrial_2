@@ -1,0 +1,19 @@
+{% extends "itasc/home.html" %}
+{% block content2 %}
+<table class='table'>
+    <tr>
+        <th>Subject ID</th>
+        <th>Paired Device</th>
+    </tr>
+   {% if object_list %}
+    {% for p in object_list %}
+    <tr>
+        <td>{{ p.patientid }}</td>
+        <td>{{ p.pairings.device }}</td>
+    </tr>
+    {% endfor %}
+</table>
+ {% else %}
+    <li>None found</li>
+ {% endif %}
+{% endblock %}
